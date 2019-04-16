@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :get_users, except: [ :new, :create]
+  before_action :check_log_in, only: [:new, :create]
 
   def show; end
 
@@ -10,6 +11,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new user_params
     if @user.save
+      log_in @user
       flash[:success] = "Welcome #{@user.name}"
       redirect_to root_url
     else

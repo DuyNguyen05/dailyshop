@@ -17,9 +17,24 @@
         <li class="nav-item">
           <%= link_to "Contact", "#", class: "nav-link" %>
         </li>
-        <li class="nav-item">
-          <%= link_to "Sign In", "#", class: "nav-link" %>
-        </li>
+        <% if logged_in? %>
+          <li class="nav-item">
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <%= "#{current_user.name}" %>
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <button class="dropdown-item" type="button">Profile</button>
+                <button class="dropdown-item" type="button">Update</button>
+                <%= button_to "Log Out", logout_path, class: "dropdown-item",
+                  type: "button", :method => :delete,
+                  data: {confirm: "mày đã chắc chưa"} %>
+              </div>
+            </div>
+          </li>
+        <% else %>
+            <%= link_to "Sign In", signin_path, class: "nav-link" %>
+        <% end %>
       </ul>
     </div>
   </div>
