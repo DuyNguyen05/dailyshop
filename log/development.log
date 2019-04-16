@@ -25291,3 +25291,77 @@ Processing by WelcomeController#index as HTML
 Completed 200 OK in 63ms (Views: 61.1ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/" for ::1 at 2019-04-16 15:04:21 +0700
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /home/duy/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ /home/duy/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (0.8ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/helpers/sessions_helper.rb:13
+  Rendered layouts/_header.html.erb (32.1ms)
+  Rendered layouts/_footer.html.erb (3.9ms)
+Completed 200 OK in 317ms (Views: 307.9ms | ActiveRecord: 1.8ms)
+
+
+Started DELETE "/logout" for ::1 at 2019-04-16 15:04:28 +0700
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"rFJaAvtjbq0r1n5Vzv1PchpiOBKXU79zhwEEsZU9KFqBTIWdGKwxOjsXRoKZF9UvQHWL35Yl93VVN5/gv1tptA=="}
+Redirected to http://localhost:3000/
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2019-04-16 15:04:28 +0700
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (1.0ms)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL LIMIT 1[0m
+  ↳ app/helpers/sessions_helper.rb:15
+  Rendered layouts/_header.html.erb (9.7ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 72ms (Views: 69.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/signin" for ::1 at 2019-04-16 15:04:30 +0700
+Processing by SessionsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL LIMIT 1[0m
+  ↳ app/helpers/sessions_helper.rb:15
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (17.0ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL LIMIT 1[0m
+  ↳ app/helpers/sessions_helper.rb:15
+  Rendered layouts/_header.html.erb (1.7ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 48ms (Views: 45.6ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/signin" for ::1 at 2019-04-16 15:04:33 +0700
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"jNn+c1NEO6/6TIWNmFe2yvl4xCyX5yy+e9zdfk7Z5dFkhsDUbHtAcx15wmJ7n25K00WwS3s+D1AaFoTeYlMofQ==", "session"=>{"email"=>"duynn.mta@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL LIMIT 1[0m
+  ↳ app/helpers/sessions_helper.rb:15
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'duynn.mta@gmail.com' LIMIT 1[0m
+  ↳ app/controllers/sessions_controller.rb:7
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:30
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE `users` SET `remember_digest` = '$2a$10$5w1oj0MeicVVhcdNlWQTLO/BOcGXPmC1rsSdhTKviHgixUsjoZTkW', `updated_at` = '2019-04-16 08:04:33' WHERE `users`.`id` = 1[0m
+  ↳ app/models/user.rb:30
+  [1m[35m (1059.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:30
+Redirected to http://localhost:3000/
+Completed 302 Found in 1225ms (ActiveRecord: 1061.1ms)
+
+
+Started GET "/" for ::1 at 2019-04-16 15:04:34 +0700
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/helpers/sessions_helper.rb:13
+  Rendered layouts/_header.html.erb (2.1ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 31ms (Views: 30.1ms | ActiveRecord: 0.3ms)
+
+
